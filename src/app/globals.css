@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-on-secondary-fixed: #151c27;
+  --color-surface: #fcf8fa;
+  --color-surface-dim: #dcd9db;
+  --color-secondary-fixed-dim: #c0c7d6;
+  --color-secondary: #585f6c;
+  --color-on-tertiary: #ffffff;
+  --color-background: #fcf8fa;
+  --color-tertiary-fixed: #f9debf;
+  --color-on-surface: #1b1b1d;
+  --color-surface-variant: #e5e2e3;
+  --color-surface-tint: #575e70;
+  --color-on-primary-fixed: #141b2b;
+  --color-surface-bright: #fcf8fa;
+  --color-on-secondary: #ffffff;
+  --color-surface-container-low: #f6f3f4;
+  --color-on-secondary-fixed-variant: #404754;
+  --color-inverse-on-surface: #f3f0f1;
+  --color-outline: #76777d;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-secondary-container: #5e6572;
+  --color-inverse-primary: #c0c6db;
+  --color-surface-container-highest: #e5e2e3;
+  --color-primary: #000000;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #dce2f7;
+  --color-tertiary-container: #261906;
+  --color-secondary-container: #dce2f3;
+  --color-primary-fixed-dim: #c0c6db;
+  --color-surface-container-lowest: #ffffff;
+  --color-outline-variant: #c6c6cd;
+  --color-on-tertiary-container: #968065;
+  --color-surface-container-high: #eae7e9;
+  --color-on-primary-fixed-variant: #404758;
+  --color-inverse-surface: #303031;
+  --color-on-surface-variant: #45464c;
+  --color-secondary-fixed: #dce2f3;
+  --color-on-background: #1b1b1d;
+  --color-tertiary-fixed-dim: #dcc2a4;
+  --color-on-tertiary-fixed: #261906;
+  --color-on-tertiary-fixed-variant: #55442d;
+  --color-on-primary-container: #7d8497;
+  --color-primary-container: #141b2b;
+  --color-on-primary: #ffffff;
+  --color-surface-container: #f0edee;
+  --color-tertiary: #000000;
+  --color-error: #ba1a1a;
+
+  /* Custom Border Radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Custom Spacing */
+  --spacing-stack-sm: 8px;
+  --spacing-stack-lg: 24px;
+  --spacing-gutter: 32px;
+  --spacing-stack-md: 16px;
+  --spacing-section-gap: 120px;
+  --spacing-container-max: 1200px;
+  --spacing-margin-page: 48px;
+
+  /* Fonts mapped to variables created in layout.tsx */
+  --font-hero: var(--font-geist-sans), sans-serif;
+  --font-body-lg: var(--font-geist-sans), sans-serif;
+  --font-heading: var(--font-geist-sans), sans-serif;
+  --font-body-md: var(--font-geist-sans), sans-serif;
+  --font-section-title: var(--font-geist-sans), sans-serif;
+  --font-section-title-mobile: var(--font-geist-sans), sans-serif;
+  --font-label: var(--font-geist-sans), sans-serif;
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+/* Custom font sizes and weights utility definitions */
+@utility text-hero-mobile {
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-heading {
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-section-title {
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+@utility text-section-title-mobile {
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+@utility text-label {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+@utility text-hero {
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+/* Scroll reveal classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bento grid layout for Focus Areas page */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.bento-full-width {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-full-width {
+    grid-column: 1;
+  }
+}
+
+/* Focus Areas fade-in-on-scroll classes */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+body {
+  font-family: var(--font-geist-sans), sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+/* ==========================================================================
+   Hero Section Layout Styles (Feel free to adjust these manually)
+   ========================================================================== */
+
+.hero-card {
+  /* Default Padding for Mobile/Tablet */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero-card {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-card {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    
+    /* Height calculation to fit screen above-the-fold. 
+       Adjust subtraction (100px) or min/max heights below to change sizing. */
+    height: calc(100vh - 100px); 
+    min-height: 600px; 
+    max-height: 800px; 
+  }
+}
+
+.hero-portrait-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+}
+
+@media (min-width: 1024px) {
+  .hero-portrait-wrap {
+    aspect-ratio: auto;
+    height: 450px; /* Height of portrait on desktop */
+    max-height: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-portrait-wrap {
+    height: 510px; /* Height of portrait on large screens */
+  }
+}
+
+
