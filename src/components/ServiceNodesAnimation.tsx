@@ -9,6 +9,7 @@ interface Node {
   y: number; // percentage height
   connections: number[];
   detail: string;
+  wide?: boolean;
 }
 
 export default function ServiceNodesAnimation() {
@@ -39,6 +40,7 @@ export default function ServiceNodesAnimation() {
       y: 6,
       connections: [0, 1, 2],
       detail: "Integration & Data Partnerships",
+      wide: true,
     },
     {
       id: 4,
@@ -60,7 +62,7 @@ export default function ServiceNodesAnimation() {
       id: 6,
       label: "Strategic Intros",
       x: 22,
-      y: 84,
+      y: 76,
       connections: [0, 4, 7],
       detail: "Strategic Introductions & Alliances",
     },
@@ -68,15 +70,16 @@ export default function ServiceNodesAnimation() {
       id: 7,
       label: "Advisory Inquiries",
       x: 50,
-      y: 94,
+      y: 96,
       connections: [0, 6, 8],
       detail: "Selective Advisory & Board Inquiries",
+      wide: true,
     },
     {
       id: 8,
       label: "Speaking & Content",
       x: 78,
-      y: 84,
+      y: 76,
       connections: [0, 5, 7],
       detail: "Speaking, Podcast, or Content Requests",
     },
@@ -233,7 +236,7 @@ export default function ServiceNodesAnimation() {
                 }`}
               >
                 <div
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-md transition-all duration-300 text-center ${
+                  className={`flex items-center gap-1.5 ${node.wide ? "px-5" : "px-3"} py-1.5 rounded-full backdrop-blur-md transition-all duration-300 text-center ${
                     hovered
                       ? "bg-blue-600/95 border-blue-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.5)] scale-105"
                       : "bg-white/5 border border-white/10 text-gray-200 hover:border-white/20"
@@ -253,7 +256,7 @@ export default function ServiceNodesAnimation() {
 
                 {/* Tooltip detail description on desktop hover */}
                 {hovered && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-9 bg-[#0f172a] text-white border border-blue-500/30 text-[10px] px-2.5 py-1.5 rounded-lg shadow-xl w-44 z-50 pointer-events-none text-center leading-normal animate-fadeIn">
+                  <div className={`absolute left-1/2 -translate-x-1/2 bg-[#0f172a] text-white border border-blue-500/30 text-[10px] px-2.5 py-1.5 rounded-lg shadow-xl w-44 z-50 pointer-events-none text-center leading-normal animate-fadeIn ${node.y > 60 ? "bottom-9" : "top-9"}`}>
                     {node.detail}
                   </div>
                 )}

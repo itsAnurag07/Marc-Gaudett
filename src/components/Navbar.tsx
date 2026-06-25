@@ -71,9 +71,9 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
           <Link
             href="/contact"
             onClick={(e) => handleNavClick("contact", "/contact", e)}
-            className="ml-4 bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98] block text-center"
+            className="ml-1 bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98] block text-center"
           >
-            contact
+            Contact
           </Link>
         </div>
 
