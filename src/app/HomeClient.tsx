@@ -85,14 +85,8 @@ export default function HomeClient() {
               </div>
               <div className="flex flex-wrap gap-4 items-center mt-1">
                 <Link
-                  href="/contact"
-                  className="bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-blue-700 shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer block text-center"
-                >
-                  Start a Conversation
-                </Link>
-                <Link
                   href="/focus-areas"
-                  className="bg-transparent border border-gray-300 text-gray-700 px-8 py-3.5 rounded-full font-semibold hover:bg-gray-50 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2"
+                  className="bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-blue-700 shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2"
                 >
                   View Focus Areas <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </Link>
@@ -239,9 +233,6 @@ export default function HomeClient() {
               <div className="border-l-4 border-blue-600 pl-4 py-1 italic text-gray-700 font-semibold bg-blue-50/50 rounded-r-xl">
                 "Marc is especially interested in practical growth systems that create leverage without unnecessary complexity."
               </div>
-              <p>
-                Currently operating inside one of the fastest-growing outbound platforms in B2B SaaS, building data partnerships and integration ecosystems at scale.
-              </p>
             </div>
           </div>
         </div>

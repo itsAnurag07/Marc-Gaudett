@@ -85,10 +85,6 @@ export default function Footer({ onScrollToSection }: FooterProps) {
           <p className="font-body-md text-body-md text-secondary">
             © {new Date().getFullYear()} Marc Gaudett. All rights reserved.
           </p>
-          <div className="flex md:justify-end gap-stack-md items-center">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span className="font-label text-label text-secondary">Currently accepting new engagements</span>
-          </div>
         </div>
       </div>
     </footer>

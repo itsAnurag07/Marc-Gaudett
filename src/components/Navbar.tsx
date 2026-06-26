@@ -73,7 +73,7 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
             onClick={(e) => handleNavClick("contact", "/contact", e)}
             className="ml-1 bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98] block text-center"
           >
-            Contact
+            Start a Conversation
           </Link>
         </div>
 

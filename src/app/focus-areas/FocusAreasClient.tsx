@@ -154,14 +154,11 @@ export default function FocusAreasClient() {
           </div>
         </section>
 
-        {/* CTA Container Card (White Shell) */}
+        {/* Closing Note */}
         <section className="max-w-7xl mx-auto fade-in-on-scroll">
           <div className="bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-8 md:p-16 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Looking to scale your ecosystem?
-            </h2>
-            <p className="text-lg text-gray-500 mb-8 max-w-xl mx-auto leading-relaxed">
-              Let&apos;s discuss how these focus areas can be tailored to your current stage and long-term vision.
+            <p className="text-xl font-bold text-gray-900 max-w-xl mx-auto leading-relaxed mb-8">
+              These are the areas I spend most of my time in. Always happy to compare notes.
             </p>
             <div className="flex justify-center">
               <Link

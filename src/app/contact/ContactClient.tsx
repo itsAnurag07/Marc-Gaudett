@@ -73,30 +73,9 @@ export default function ContactClient() {
               </div>
 
               <div className="border-t border-gray-100 pt-5">
-                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest block mb-4">
-                  This is best for:
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Partnership conversations",
-                    "B2B SaaS growth conversations",
-                    "Affiliate or referral program discussions",
-                    "Agency or consultant ecosystem discussions",
-                    "Integration or data partnership conversations",
-                    "Strategic introductions",
-                    "Speaking, podcast, or content requests",
-                    "Selective advisory inquiries",
-                  ].map((reason, idx) => (
-                    <li key={idx} className="flex items-start gap-3 group">
-                      <span className="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">
-                        check_circle
-                      </span>
-                      <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors leading-snug">
-                        {reason}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-base text-gray-500 leading-relaxed">
+                  If you&apos;d like to exchange ideas, discuss partnerships, or simply connect, feel free to reach out. I&apos;ll do my best to respond.
+                </p>
               </div>
 
               <div className="border-t border-gray-100 pt-8">
