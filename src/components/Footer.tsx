@@ -5,19 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface FooterProps {
-  onScrollToSection: (sectionId: string) => void;
+  onScrollToSection?: (sectionId: string) => void;
 }
 
 export default function Footer({ onScrollToSection }: FooterProps) {
   const pathname = usePathname();
-
-  const handleNavClick = (id: string, e: React.MouseEvent) => {
-    if (pathname === "/") {
-      if (id === "contact" || id === "focus-areas") return; // standard Link
-      e.preventDefault();
-      onScrollToSection(id);
-    }
-  };
 
   return (
     <footer className="bg-surface border-t border-outline-variant/20 w-full py-16">
@@ -25,7 +17,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
         <div className="space-y-stack-md">
           <span className="font-heading text-heading font-semibold text-primary">Marc Gaudett</span>
           <p className="font-body-md text-body-md text-secondary max-w-xs">
-            Partner-led growth, integrations, data partnerships, and B2B SaaS revenue strategy.
+            Revenue infrastructure for B2B SaaS companies.
           </p>
         </div>
         <div className="flex flex-col md:flex-row gap-gutter md:gap-16">
@@ -34,11 +26,22 @@ export default function Footer({ onScrollToSection }: FooterProps) {
             <ul className="space-y-2 flex flex-col">
               <li>
                 <Link
-                  className="font-body-md text-body-md text-secondary hover:text-primary transition-colors cursor-pointer"
-                  href="/#about"
-                  onClick={(e) => handleNavClick("about", e)}
+                  className={`font-body-md text-body-md transition-colors cursor-pointer ${
+                    pathname === "/about" ? "text-primary font-medium" : "text-secondary hover:text-primary"
+                  }`}
+                  href="/about"
                 >
                   About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`font-body-md text-body-md transition-colors cursor-pointer ${
+                    pathname === "/notes" ? "text-primary font-medium" : "text-secondary hover:text-primary"
+                  }`}
+                  href="/notes"
+                >
+                  Notes
                 </Link>
               </li>
               <li>
@@ -47,7 +50,6 @@ export default function Footer({ onScrollToSection }: FooterProps) {
                     pathname === "/focus-areas" ? "text-primary font-medium" : "text-secondary hover:text-primary"
                   }`}
                   href="/focus-areas"
-                  onClick={(e) => handleNavClick("focus-areas", e)}
                 >
                   Focus Areas
                 </Link>
@@ -58,7 +60,6 @@ export default function Footer({ onScrollToSection }: FooterProps) {
                     pathname === "/contact" ? "text-primary font-medium" : "text-secondary hover:text-primary"
                   }`}
                   href="/contact"
-                  onClick={(e) => handleNavClick("contact", e)}
                 >
                   Contact
                 </Link>

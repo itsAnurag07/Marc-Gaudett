@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface NavbarProps {
-  onScrollToSection: (sectionId: string) => void;
+  onScrollToSection?: (sectionId: string) => void;
 }
 
 export default function Navbar({ onScrollToSection }: NavbarProps) {
@@ -13,25 +13,13 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
   const pathname = usePathname();
 
   const navItems = [
-    { label: "About", id: "about", href: "/#about" },
-    { label: "Focus Areas", id: "focus-areas", href: "/focus-areas" },
-
+    { label: "About", href: "/about" },
+    { label: "Notes", href: "/notes" },
+    { label: "Focus Areas", href: "/focus-areas" },
   ];
 
-  const handleNavClick = (id: string, href: string, e: React.MouseEvent) => {
+  const handleNavClick = () => {
     setIsOpen(false);
-    if (href === "/") {
-      e.preventDefault();
-      onScrollToSection("hero");
-      return;
-    }
-    if (!href.includes("#")) {
-      return;
-    }
-    if (pathname === "/") {
-      e.preventDefault();
-      onScrollToSection(id);
-    }
   };
 
   return (
@@ -40,7 +28,7 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
         <Link
           className="flex items-center gap-2 font-heading text-lg font-bold tracking-tight text-gray-900 hover:opacity-80 transition-opacity"
           href="/"
-          onClick={(e) => handleNavClick("hero", "/", e)}
+          onClick={handleNavClick}
         >
           <span>Marc Gaudett</span>
         </Link>
@@ -48,21 +36,16 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => {
-            const hasHash = typeof window !== "undefined" && !!window.location.hash;
-            const currentHash = typeof window !== "undefined" ? window.location.hash : "";
-            const isActive =
-              (item.href === "/" && pathname === "/" && !hasHash) ||
-              (item.href.includes("#") && pathname === "/" && currentHash === `#${item.id}`) ||
-              (item.id === "contact" && pathname === "/contact");
+            const isActive = pathname === item.href;
             return (
               <Link
-                key={item.id}
+                key={item.href}
                 className={`font-body-md text-sm transition-colors cursor-pointer pb-1 ${isActive
                   ? "text-blue-600 font-semibold border-b-2 border-blue-600"
                   : "text-gray-600 hover:text-blue-600"
                   }`}
                 href={item.href}
-                onClick={(e) => handleNavClick(item.id, item.href, e)}
+                onClick={handleNavClick}
               >
                 {item.label}
               </Link>
@@ -70,8 +53,12 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
           })}
           <Link
             href="/contact"
-            onClick={(e) => handleNavClick("contact", "/contact", e)}
-            className="ml-1 bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98] block text-center"
+            onClick={handleNavClick}
+            className={`ml-1 px-6 py-2.5 rounded-full text-sm font-semibold transition-all cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98] block text-center ${
+              pathname === "/contact"
+                ? "bg-blue-700 text-white"
+                : "bg-blue-600 text-white hover:bg-blue-700"
+            }`}
           >
             Start a Conversation
           </Link>
@@ -96,18 +83,16 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
       >
         <div className="px-6 py-6 flex flex-col gap-4">
           {navItems.map((item) => {
-            const isActiveMobile =
-              (item.href === "/" && pathname === "/") ||
-              (item.id === "contact" && pathname === "/contact");
+            const isActive = pathname === item.href;
             return (
               <Link
-                key={item.id}
-                className={`font-body-md text-base transition-colors py-2 border-b border-gray-50 cursor-pointer ${isActiveMobile
+                key={item.href}
+                className={`font-body-md text-base transition-colors py-2 border-b border-gray-50 cursor-pointer ${isActive
                   ? "text-blue-600 font-semibold"
                   : "text-gray-600 hover:text-blue-600"
                   }`}
                 href={item.href}
-                onClick={(e) => handleNavClick(item.id, item.href, e)}
+                onClick={handleNavClick}
               >
                 {item.label}
               </Link>
@@ -115,10 +100,10 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
           })}
           <Link
             href="/contact"
-            onClick={(e) => handleNavClick("contact", "/contact", e)}
+            onClick={handleNavClick}
             className="w-full bg-blue-600 text-white py-3.5 rounded-full text-base font-semibold hover:bg-blue-700 transition-all shadow-sm active:scale-[0.98] text-center block"
           >
-            Contact
+            Start a Conversation
           </Link>
         </div>
       </div>

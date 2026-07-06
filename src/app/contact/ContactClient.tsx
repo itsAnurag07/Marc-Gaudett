@@ -47,48 +47,42 @@ export default function ContactClient() {
     }, 1500);
   };
 
-  const handleScrollToSection = (id: string) => {
-    if (typeof window !== "undefined") {
-      window.location.href = `/#${id}`;
-    }
-  };
-
   return (
     <>
-      <Navbar onScrollToSection={handleScrollToSection} />
+      <Navbar />
 
       <main className="bg-[#eaeef6] min-h-screen pt-20 pb-6 px-4 md:px-6">
         <div className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 md:p-12 lg:p-16 relative overflow-hidden mb-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left Column: Context & Bullet Points */}
-            <div className="lg:col-span-5 flex flex-col gap-5">
+            <div className="lg:col-span-5 flex flex-col gap-6">
               <div>
                 <h1 className="font-hero text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
-                  Start a Conversation
+                  Compare Notes
                 </h1>
                 <p className="font-body-lg text-lg text-gray-500 leading-relaxed">
-                  For thoughtful conversations, partnerships, introductions, or relevant opportunities, send a short note with context.
+                  If you are building in B2B SaaS, partnerships, integrations, data, outbound, or partner-led distribution, feel free to reach out with context.
                 </p>
               </div>
 
               <div className="border-t border-gray-100 pt-5">
                 <p className="text-base text-gray-500 leading-relaxed">
-                  If you&apos;d like to exchange ideas, discuss partnerships, or simply connect, feel free to reach out. I&apos;ll do my best to respond.
+                  I am always open to thoughtful conversations, relevant opportunities, and useful introductions.
                 </p>
               </div>
 
-              <div className="border-t border-gray-100 pt-8">
+              <div className="border-t border-gray-100 pt-6">
                 <div className="p-6 rounded-2xl bg-gray-50 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block mb-1">LinkedIn Hub</span>
+                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block mb-1">LinkedIn</span>
                     <a
                       className="text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1.5"
                       href="https://www.linkedin.com/in/marcgaudett/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Connect with Marc
+                      Marc Gaudett on LinkedIn
                       <span className="material-symbols-outlined text-xs">north_east</span>
                     </a>
                   </div>
@@ -230,7 +224,7 @@ export default function ContactClient() {
         </div>
       </main>
 
-      <Footer onScrollToSection={handleScrollToSection} />
+      <Footer />
     </>
   );
 }

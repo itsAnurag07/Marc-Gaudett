@@ -24,7 +24,6 @@ export default function FocusAreasClient() {
     const elements = document.querySelectorAll(".fade-in-on-scroll");
     elements.forEach((el) => {
       observer.observe(el);
-      // Check immediately on mount in case elements are already in view
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight) {
         el.classList.add("visible");
@@ -36,65 +35,76 @@ export default function FocusAreasClient() {
     };
   }, []);
 
-  const handleScrollToSection = (id: string) => {
-    if (typeof window !== "undefined") {
-      window.location.href = `/#${id}`;
-    }
-  };
-
   const focusAreas = [
     {
-      title: "Partner-Led Growth",
+      title: "Partnerships",
       description:
-        "Building revenue through partners, referrals, affiliates, agencies, consultants, data partners, integration partners, and ecosystem relationships.",
+        "Building and scaling channel programs, agency alliances, and ecosystem distribution models that generate sustainable co-selling pipeline.",
       icon: "handshake",
       delay: "0ms",
     },
     {
-      title: "Affiliate & Referral Programs",
+      title: "Integrations",
       description:
-        "Designing and improving programs that help companies turn customers, creators, affiliates, agencies, and strategic partners into a more reliable source of revenue.",
-      icon: "hub",
+        "Designing integration loops and API distributions that align directly with actual user habit workflows to maximize product retention.",
+      icon: "integration_instructions",
       delay: "50ms",
     },
     {
-      title: "Agency & Consultant Ecosystems",
+      title: "Data Partnerships",
       description:
-        "Helping companies think through how agencies, consultants, operators, and advisors can become stronger distribution partners for B2B software.",
-      icon: "groups_3",
+        "Evaluating data suppliers, checking compliance footprints, and mapping raw account intelligence into real-time GTM campaigns.",
+      icon: "database",
       delay: "100ms",
     },
     {
-      title: "Integrations & Data Partnerships",
+      title: "Affiliates",
       description:
-        "Identifying ways that integration partners, data providers, APIs, marketplaces, and ecosystem relationships can create new revenue, retention, and distribution leverage.",
-      icon: "integration_instructions",
+        "Structuring commission systems and custom co-marketing tracks for SaaS operators and creators to generate trusted inbound traffic.",
+      icon: "hub",
       delay: "150ms",
     },
     {
-      title: "Outbound & GTM Systems",
+      title: "Referrals",
       description:
-        "Connecting outbound, partnerships, content, referrals, data, and strategic relationships into a more practical revenue system.",
-      icon: "rocket_launch",
+        "Designing double-sided incentive structures and attribution systems that turn existing customer satisfaction into low-friction warm intros.",
+      icon: "groups",
       delay: "200ms",
     },
     {
-      title: "Strategic Partnerships",
+      title: "Outbound",
       description:
-        "Working through where the right relationship, channel, partner, or commercial structure can create leverage that would be hard to build through direct sales alone.",
-      icon: "architecture",
+        "Connecting data enrichment pipelines, deliverability protocols, and targeted outreach mechanisms to scale outbound sales volume cleanly.",
+      icon: "rocket_launch",
       delay: "250ms",
+    },
+    {
+      title: "GTM Systems",
+      description:
+        "Building the underlying database schemas, trigger structures, and CRM automation that link direct outreach, APIs, and partner tracking.",
+      icon: "architecture",
+      delay: "300ms",
+    },
+    {
+      title: "AI Search / AEO",
+      description:
+        "Analyzing and optimizing how B2B SaaS solutions are cited and recommended by LLM agents, citation engines, and modern conversational interfaces.",
+      icon: "explore",
+      delay: "350ms",
     },
   ];
 
   return (
     <>
-      <Navbar onScrollToSection={handleScrollToSection} />
+      <Navbar />
 
       <main className="bg-[#eaeef6] min-h-screen pt-20 pb-16 px-4 md:px-6">
         {/* Hero Card Container (White Shell) */}
         <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
           <div className="max-w-3xl">
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-2">
+              Expertise
+            </span>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6"
               style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
@@ -102,19 +112,19 @@ export default function FocusAreasClient() {
               Focus Areas
             </h1>
             <p className="text-lg text-gray-500 font-normal leading-relaxed">
-              These are the areas I spend most of my time working in across B2B SaaS, partnerships, growth, and revenue systems. The common thread is simple: finding practical ways to create revenue through trust, distribution, data, relationships, and systems.
+              These are the individual areas of expertise I bring when building revenue infrastructure for B2B SaaS companies. The objective is always GTM leverage: aligning systems, partners, and data to drive pipeline.
             </p>
           </div>
         </section>
 
         {/* Focus Areas Bento Grid */}
         <section className="max-w-7xl mx-auto mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {focusAreas.map((area, idx) => (
               <div
                 key={idx}
                 style={{ transitionDelay: area.delay }}
-                className="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm fade-in-on-scroll hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[280px]"
+                className="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm fade-in-on-scroll hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[220px]"
               >
                 <div>
                   <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-6">
@@ -131,26 +141,6 @@ export default function FocusAreasClient() {
                 </div>
               </div>
             ))}
-
-            {/* AI & Data-Driven Growth (Full Width Highlight in bento style) */}
-            <div
-              style={{ transitionDelay: "300ms" }}
-              className="lg:col-span-3 bg-[#0b1322] text-white p-8 md:p-12 rounded-[24px] shadow-sm fade-in-on-scroll flex flex-col md:flex-row md:items-center gap-8 hover:shadow-md transition-all duration-300"
-            >
-              <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
-                <span className="material-symbols-outlined" style={{ fontSize: "36px" }}>
-                  memory
-                </span>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-3">
-                  AI &amp; Data-Driven Growth
-                </h3>
-                <p className="text-gray-300 text-base max-w-4xl leading-relaxed">
-                  Exploring how AI, data, automation, enrichment, and workflow tools can improve GTM systems, partner motions, and revenue operations.
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -158,12 +148,12 @@ export default function FocusAreasClient() {
         <section className="max-w-7xl mx-auto fade-in-on-scroll">
           <div className="bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-8 md:p-16 text-center">
             <p className="text-xl font-bold text-gray-900 max-w-xl mx-auto leading-relaxed mb-8">
-              These are the areas I spend most of my time in. Always happy to compare notes.
+              Always open to comparing notes on revenue systems.
             </p>
             <div className="flex justify-center">
               <Link
                 href="/contact"
-                className="bg-blue-600 text-white px-10 py-4 rounded-full font-semibold hover:bg-blue-700 shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer text-center block"
+                className="bg-blue-600 text-white px-10 py-4 rounded-full font-semibold hover:bg-blue-700 shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer text-center block text-sm"
               >
                 Start a Conversation
               </Link>
@@ -172,7 +162,7 @@ export default function FocusAreasClient() {
         </section>
       </main>
 
-      <Footer onScrollToSection={handleScrollToSection} />
+      <Footer />
     </>
   );
 }
