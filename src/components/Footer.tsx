@@ -17,7 +17,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
         <div className="space-y-stack-md">
           <span className="font-heading text-heading font-semibold text-primary">Marc Gaudett</span>
           <p className="font-body-md text-body-md text-secondary max-w-xs">
-            Revenue infrastructure for B2B SaaS companies.
+            Operator Notes on SaaS growth and distribution.
           </p>
         </div>
         <div className="flex flex-col md:flex-row gap-gutter md:gap-16">
@@ -41,27 +41,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
                   }`}
                   href="/notes"
                 >
-                  Notes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={`font-body-md text-body-md transition-colors cursor-pointer ${
-                    pathname === "/focus-areas" ? "text-primary font-medium" : "text-secondary hover:text-primary"
-                  }`}
-                  href="/focus-areas"
-                >
-                  Focus Areas
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={`font-body-md text-body-md transition-colors cursor-pointer ${
-                    pathname === "/contact" ? "text-primary font-medium" : "text-secondary hover:text-primary"
-                  }`}
-                  href="/contact"
-                >
-                  Contact
+                  Operator Notes
                 </Link>
               </li>
             </ul>

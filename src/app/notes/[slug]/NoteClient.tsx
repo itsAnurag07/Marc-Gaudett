@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import KitNewsletter from "@/components/KitNewsletter";
 import { NOTES_DATA } from "@/data/notes";
 
 interface NoteClientProps {
@@ -15,6 +16,7 @@ interface NoteContent {
   date: string;
   readTime: string;
   paragraphs: string[];
+  category: string;
 }
 
 const NOTE_CONTENTS: Record<string, NoteContent> = {
@@ -22,6 +24,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "Why most data partnerships fail before pricing is even discussed",
     date: "July 2026",
     readTime: "3 min read",
+    category: "Data & Integrations",
     paragraphs: [
       "Data partnerships in B2B SaaS are highly sought after, but most break down during early alignment. The failure is rarely about pricing. Instead, it is usually because of a misalignment between the data models of the two organizations and the actual GTM workflows of their customers.",
       "For a data partnership to work, the data must be actionable in the target user's context. If a partner provides raw account intelligence, but the user's workflow requires direct-dial lead enrichment at the moment of cold call execution, the partnership will fail to drive adoption. This operational gap causes direct churn, regardless of how cheap the licensing was.",
@@ -32,6 +35,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "How to think about BYOK vs centrally routed integrations",
     date: "June 2026",
     readTime: "4 min read",
+    category: "Data & Integrations",
     paragraphs: [
       "When designing integration ecosystems, SaaS architectures must choose between centrally routed integrations (the vendor hosts the API keys and manages all routing) and Bring Your Own Key (BYOK) integrations (the client inputs their own credentials directly into their workspace).",
       "Centrally routed setups offer smooth user onboarding but introduce significant liability, compliance (GDPR/CCPA/SOC2) overhead, and latency bottlenecks. For high-volume SaaS tools—especially outbound platforms or data scrapers—centrally managed keys are a massive architectural risk.",
@@ -42,6 +46,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "When affiliate programs become revenue infrastructure",
     date: "June 2026",
     readTime: "3 min read",
+    category: "Affiliates & Referrals",
     paragraphs: [
       "Many B2B companies start an affiliate program by launching a basic trackable link system and handing it to creators or bloggers. This usually results in low-quality organic traffic and coupon-site spam. The program only becomes 'revenue infrastructure' when it transitions from an ad-hoc promo tool into an official, attribution-backed GTM channel.",
       "To make this transition, you need three elements: enterprise-grade tracking (so partners are credited for multi-touch conversions, not just last-click), structured partner tiers (supporting agency partners who use your software for client work, rather than just referral links), and dedicated co-marketing resources.",
@@ -52,6 +57,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "How to evaluate a new GTM data provider",
     date: "May 2026",
     readTime: "5 min read",
+    category: "Data & Integrations",
     paragraphs: [
       "Sales teams routinely test new GTM data providers by requesting a sample spreadsheet, scanning the emails of people they know, and declaring the data 'good' or 'bad.' This static approach is completely flawed.",
       "To evaluate a data provider for revenue infrastructure, you must assess three key metrics under live operating conditions: fill rates (what percentage of target domains return valid metadata), refresh cycles (how often account records are updated), and API responsiveness (how fast data can be queried during outbound triggers).",
@@ -62,6 +68,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "Why integrations should be tied to user workflow, not vendor excitement",
     date: "May 2026",
     readTime: "3 min read",
+    category: "Data & Integrations",
     paragraphs: [
       "B2B SaaS companies often build integrations based on the market cap or logo size of the partner company, rather than actual customer demand. They build a 'vanity integration,' write a joint press release, and watch adoption sit at less than 1%.",
       "Integrations drive retention and expansion only when they are deeply tied to the user's daily habit loop. If a customer has to leave their primary workspace, open a separate tab, and copy-paste identifiers to sync data, the integration is broken.",
@@ -72,6 +79,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "How partner channels create leverage without adding headcount",
     date: "April 2026",
     readTime: "4 min read",
+    category: "Partnerships",
     paragraphs: [
       "The core advantage of partner distribution is operating leverage. Direct sales teams require linear hiring to increase sales. Partner ecosystems, once built, allow you to scale your GTM reach exponentially.",
       "This leverage is achieved by aligning your software incentives with the business models of your partners. For instance, when an agency uses your platform to service their clients, they manage the customer success, onboarding, and basic troubleshooting. You acquire customer accounts while offloading account management.",
@@ -82,6 +90,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "Why referrals, affiliates, and partnerships should not be managed as separate islands",
     date: "April 2026",
     readTime: "4 min read",
+    category: "Partnerships",
     paragraphs: [
       "SaaS companies frequently divide GTM tracks by department: marketing runs the affiliate program, sales manages integration partners, and customer success handles referrals. This structural fragmentation creates disjointed customer journeys and major attribution errors.",
       "A customer might discover a product via an affiliate link, request an integration through sales, and submit a referral later. If these tracks run on separate tools, double-payouts occur, or worse, partners get credit for conversions they didn't drive.",
@@ -92,6 +101,7 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
     title: "How to think about revenue infrastructure in B2B SaaS",
     date: "March 2026",
     readTime: "6 min read",
+    category: "Outbound & GTM",
     paragraphs: [
       "Revenue infrastructure is the complete technical and operational layer that connects your product, GTM tools, third-party distribution, and customer databases. It is the plumbing of your sales engine.",
       "Most companies focus entirely on buying more seats of sales tools. But without clean integrations, unified tracking, and standardized data flows, those tools operate as isolated silos. Revenue infrastructure focuses on the connections between them.",
@@ -101,13 +111,12 @@ const NOTE_CONTENTS: Record<string, NoteContent> = {
 };
 
 export default function NoteClient({ slug }: NoteClientProps) {
-  const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState("");
 
   const note = NOTE_CONTENTS[slug] || {
     title: "Note Not Found",
     date: "",
     readTime: "",
+    category: "General",
     paragraphs: ["The note you are looking for could not be found."],
   };
 
@@ -139,15 +148,7 @@ export default function NoteClient({ slug }: NoteClientProps) {
     };
   }, [slug]);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
-    setEmail("");
-    setTimeout(() => {
-      setSubscribed(false);
-    }, 5000);
-  };
+
 
   return (
     <>
@@ -173,7 +174,7 @@ export default function NoteClient({ slug }: NoteClientProps) {
               <span>•</span>
               <span>{note.readTime}</span>
               <span>•</span>
-              <span className="text-blue-600 font-semibold uppercase tracking-wider">Revenue Infrastructure</span>
+              <span className="text-blue-600 font-bold uppercase tracking-widest">{note.category}</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
               {note.title}
@@ -188,57 +189,22 @@ export default function NoteClient({ slug }: NoteClientProps) {
           </div>
 
           {/* In-line Newsletter Signup */}
-          <div className="mt-12 bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100/50 space-y-4">
+          <div id="newsletter" className="mt-12 bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100/50 space-y-4">
             <div className="space-y-1">
-              <h4 className="font-bold text-gray-900 text-lg">Revenue Infrastructure Notes</h4>
+              <span className="text-[10px] text-blue-600 font-bold uppercase tracking-widest block">THE NEWSLETTER</span>
+              <h4 className="font-bold text-gray-900 text-lg">Receive the next Operator Note.</h4>
               <p className="text-xs text-gray-500">
-                A weekly note on B2B SaaS partnerships, data GTM integrations, and GTM strategy. Join the mailing list to receive the next note.
+                One practical note each week on partnerships, integrations, data, distribution and the systems behind SaaS growth.
               </p>
             </div>
             
-            {subscribed ? (
-              <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3 text-center text-emerald-600 font-medium text-sm">
-                Thanks for joining. The next note will be delivered to your inbox.
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="name@company.com"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all grow"
-                />
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-blue-700 active:scale-[0.98] transition-all cursor-pointer text-sm shrink-0"
-                >
-                  Join Newsletter
-                </button>
-              </form>
-            )}
+            <KitNewsletter />
+
+            <p className="text-[10px] text-gray-400 text-center">
+              No spam or sales pitches. Unsubscribe anytime.
+            </p>
           </div>
         </article>
-
-        {/* Read Next Section */}
-        <section className="max-w-4xl mx-auto fade-in-on-scroll">
-          <div className="bg-white rounded-[24px] p-8 border border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-            <div className="space-y-1">
-              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Thoughtful conversations</span>
-              <h4 className="font-bold text-gray-900 text-lg">Want to discuss this topic further?</h4>
-              <p className="text-xs text-gray-500">
-                I am always open to starting strategic, context-driven conversations.
-              </p>
-            </div>
-            <Link
-              href="/contact"
-              className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all cursor-pointer text-xs shrink-0 block text-center"
-            >
-              Compare Notes
-            </Link>
-          </div>
-        </section>
       </main>
 
       <Footer />

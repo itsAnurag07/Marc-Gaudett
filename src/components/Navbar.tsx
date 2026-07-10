@@ -13,13 +13,22 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
   const pathname = usePathname();
 
   const navItems = [
+    { label: "Operator Notes", href: "/notes" },
     { label: "About", href: "/about" },
-    { label: "Notes", href: "/notes" },
-    { label: "Focus Areas", href: "/focus-areas" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/marcgaudett/", external: true },
   ];
 
   const handleNavClick = () => {
     setIsOpen(false);
+  };
+
+  const handleSubscribeClick = (e: React.MouseEvent) => {
+    setIsOpen(false);
+    const element = document.getElementById("newsletter");
+    if (element) {
+      e.preventDefault();
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -37,13 +46,28 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
+            const linkClass = `font-body-md text-sm transition-all cursor-pointer pb-1 border-b-2 ${
+              isActive
+                ? "text-blue-600 font-semibold border-blue-600"
+                : "text-gray-600 hover:text-blue-600 border-transparent"
+            }`;
+            if (item.external) {
+              return (
+                <a
+                  key={item.href}
+                  className={linkClass}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={item.href}
-                className={`font-body-md text-sm transition-colors cursor-pointer pb-1 ${isActive
-                  ? "text-blue-600 font-semibold border-b-2 border-blue-600"
-                  : "text-gray-600 hover:text-blue-600"
-                  }`}
+                className={linkClass}
                 href={item.href}
                 onClick={handleNavClick}
               >
@@ -52,15 +76,11 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
             );
           })}
           <Link
-            href="/contact"
-            onClick={handleNavClick}
-            className={`ml-1 px-6 py-2.5 rounded-full text-sm font-semibold transition-all cursor-pointer shadow-sm hover:scale-[1.02] active:scale-[0.98] block text-center ${
-              pathname === "/contact"
-                ? "bg-blue-700 text-white"
-                : "bg-blue-600 text-white hover:bg-blue-700"
-            }`}
+            href="/#newsletter"
+            onClick={handleSubscribeClick}
+            className="ml-1 px-5 py-2 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-full text-sm font-semibold transition-all cursor-pointer block text-center shadow-sm"
           >
-            Start a Conversation
+            Subscribe
           </Link>
         </div>
 
@@ -84,6 +104,20 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
         <div className="px-6 py-6 flex flex-col gap-4">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
+            if (item.external) {
+              return (
+                <a
+                  key={item.href}
+                  className="font-body-md text-base transition-colors py-2 border-b border-gray-50 cursor-pointer text-gray-600 hover:text-blue-600"
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleNavClick}
+                >
+                  {item.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={item.href}
@@ -99,11 +133,11 @@ export default function Navbar({ onScrollToSection }: NavbarProps) {
             );
           })}
           <Link
-            href="/contact"
-            onClick={handleNavClick}
-            className="w-full bg-blue-600 text-white py-3.5 rounded-full text-base font-semibold hover:bg-blue-700 transition-all shadow-sm active:scale-[0.98] text-center block"
+            href="/#newsletter"
+            onClick={handleSubscribeClick}
+            className="w-full border border-blue-600 text-blue-600 py-3 rounded-full text-base font-semibold hover:bg-blue-600 hover:text-white transition-all shadow-sm active:scale-[0.98] text-center block"
           >
-            Start a Conversation
+            Subscribe
           </Link>
         </div>
       </div>

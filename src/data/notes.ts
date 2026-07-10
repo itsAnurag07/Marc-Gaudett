@@ -4,6 +4,7 @@ export interface NoteItem {
   snippet: string;
   date: string;
   readTime: string;
+  category: string;
 }
 
 export const NOTES_DATA: NoteItem[] = [
@@ -13,6 +14,7 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "Data alignment, target profiles, and integration friction matter far more than the price tag.",
     date: "July 2026",
     readTime: "3 min read",
+    category: "Data & Integrations",
   },
   {
     slug: "byok-vs-central-integrations",
@@ -20,6 +22,7 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "Decoupling client credentials from central middleware for security, cost, and latency leverage.",
     date: "June 2026",
     readTime: "4 min read",
+    category: "Data & Integrations",
   },
   {
     slug: "when-affiliate-becomes-infrastructure",
@@ -27,6 +30,7 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "Moving from ad-hoc promotional discount links to a structured, repeatable, attribution-backed GTM channel.",
     date: "June 2026",
     readTime: "3 min read",
+    category: "Affiliates & Referrals",
   },
   {
     slug: "evaluate-gtm-data-provider",
@@ -34,6 +38,7 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "Coverage and cost are vanity metrics. True assessment requires evaluating fill rates, refresh cycles, and API compliance.",
     date: "May 2026",
     readTime: "5 min read",
+    category: "Data & Integrations",
   },
   {
     slug: "integrations-tied-to-user-workflow",
@@ -41,6 +46,7 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "Vanilla integrations drive zero adoption. Focus on the daily routines and actions of active users.",
     date: "May 2026",
     readTime: "3 min read",
+    category: "Data & Integrations",
   },
   {
     slug: "partner-channels-leverage",
@@ -48,6 +54,7 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "Scaling distribution by aligning incentives with third-party software, agencies, and operators.",
     date: "April 2026",
     readTime: "4 min read",
+    category: "Partnerships",
   },
   {
     slug: "stop-managing-partnerships-as-islands",
@@ -55,6 +62,7 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "Unifying partner tracks under a single technical infrastructure ensures accurate attribution and unified incentive design.",
     date: "April 2026",
     readTime: "4 min read",
+    category: "Partnerships",
   },
   {
     slug: "thinking-about-revenue-infrastructure",
@@ -62,5 +70,6 @@ export const NOTES_DATA: NoteItem[] = [
     snippet: "A foundational blueprint for connecting APIs, outbound pipelines, referral loops, and partnerships into a single growth engine.",
     date: "March 2026",
     readTime: "6 min read",
+    category: "Outbound & GTM",
   },
 ];
