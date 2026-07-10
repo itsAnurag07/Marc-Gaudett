@@ -68,33 +68,56 @@ export default function AboutClient() {
       <main className="bg-[#eaeef6] min-h-screen pt-20 pb-16 px-4 md:px-6">
         {/* Main Operator Shell */}
         <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            {/* Left: Headline & Bio */}
-            <div className="lg:col-span-7 flex flex-col gap-6">
-              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
-                Operator Profile
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
-                Marc Gaudett
-              </h1>
-              <h2 className="text-xl font-semibold text-gray-700 max-w-xl">
-                I help B2B SaaS companies align their product value with strategic distribution networks.
-              </h2>
-              <div className="font-body-lg text-base text-gray-500 flex flex-col gap-5 leading-relaxed max-w-2xl">
-                <p>
-                  Over the past 15 years, I have worked as a growth operator, focusing on GTM systems, outbound mechanics, data alignment, and partnerships. I build the systems that help software companies capture market opportunities without over-complicating their operations.
-                </p>
-                <p>
-                  Currently, I lead data ecosystems and integration partnerships at one of the fastest-growing outbound sales platforms in the SaaS industry. In this role, I work at the intersection of developer teams, API providers, and GTM stakeholders to ship high-leverage data integrations.
-                </p>
-                <p>
-                  This site is a quiet notebook containing practical, operator-led lessons. My goal is to serve as a useful resource for founders, product leads, and growth operators looking to design better revenue infrastructure.
-                </p>
+          <div className="space-y-8">
+
+            {/* Top: Two-column — Bio left, Portrait right */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+              {/* Left: Headline & Bio */}
+              <div className="md:col-span-8 space-y-6">
+                <div>
+                  <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-2">
+                    Operator Profile
+                  </span>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+                    Marc Gaudett
+                  </h1>
+                </div>
+                <h2 className="text-xl font-semibold text-gray-700">
+                  I help B2B SaaS companies align their product value with strategic distribution networks.
+                </h2>
+                <div className="font-body-lg text-base text-gray-500 flex flex-col gap-5 leading-relaxed">
+                  <p>
+                    Over the past 15 years, I have worked as a growth operator, focusing on GTM systems, outbound mechanics, data alignment, and partnerships. I build the systems that help software companies capture market opportunities without over-complicating their operations.
+                  </p>
+                  <p>
+                    Currently, I lead data ecosystems and integration partnerships at one of the fastest-growing outbound sales platforms in the SaaS industry. In this role, I work at the intersection of developer teams, API providers, and GTM stakeholders to ship high-leverage data integrations.
+                  </p>
+                  <p>
+                    This site is a quiet notebook containing practical, operator-led lessons. My goal is to serve as a useful resource for founders, product leads, and growth operators looking to design better revenue infrastructure.
+                  </p>
+                </div>
               </div>
-              <div className="mt-5 border-t border-gray-100 pt-4 space-y-3">
+
+              {/* Right: Portrait */}
+              <div className="md:col-span-4 flex justify-start md:justify-end">
+                <div className="relative w-56 h-64 md:w-full md:h-80 rounded-2xl overflow-hidden shadow-sm bg-[#7b8f96]">
+                  <Image
+                    src="/images/Marc.webp"
+                    alt="Marc Gaudett Portrait"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 224px, 400px"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Divider and Focus Areas (Full Width) */}
+            <div className="border-t border-gray-100 pt-8">
+              <div className="space-y-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">Current Focus Areas</h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
                     API &amp; Data Partnerships
@@ -112,20 +135,6 @@ export default function AboutClient() {
                     Emerging AI Search Optimization (AEO)
                   </li>
                 </ul>
-              </div>
-            </div>
-
-            {/* Right: Portrait */}
-            <div className="lg:col-span-5 w-full">
-              <div className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-[580px] rounded-[24px] overflow-hidden shadow-sm bg-[#7b8f96]">
-                <Image
-                  src="/images/Marc.webp"
-                  alt="Marc Gaudett Portrait"
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  priority
-                />
               </div>
             </div>
 
