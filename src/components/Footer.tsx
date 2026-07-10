@@ -66,7 +66,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
           <p className="font-body-md text-body-md text-secondary">
             © {new Date().getFullYear()} Marc Gaudett. All rights reserved.
           </p>
-          <p className="text-xs text-secondary leading-relaxed">
+          <p className="text-xs text-secondary leading-relaxed text-right max-w-xs ml-auto">
             Views shared here are my own and do not represent any current or former employer.
           </p>
         </div>
