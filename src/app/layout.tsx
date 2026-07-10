@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marc Gaudett | B2B SaaS Revenue & Partnerships Strategy",
-  description: "Partner-led growth, integrations, data partnerships, and B2B SaaS revenue strategy.",
+  title: "Marc Gaudett | Operator Notes",
+  description: "Practical notes on partnerships, integrations, data, distribution, and SaaS growth systems.",
 };
 
 export default function RootLayout({

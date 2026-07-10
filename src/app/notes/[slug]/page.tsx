@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const resolvedParams = await params;
   const note = NOTES_DATA.find((n) => n.slug === resolvedParams.slug);
   return {
-    title: note ? `${note.title} | Revenue Infrastructure Notes` : "Note | Marc Gaudett",
-    description: note?.snippet || "Revenue Infrastructure Notes by Marc Gaudett.",
+    title: note ? `${note.title} | Operator Notes` : "Operator Note | Marc Gaudett",
+    description: note?.snippet || "Operator Notes by Marc Gaudett.",
   };
 }
 
