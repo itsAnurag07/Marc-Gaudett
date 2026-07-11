@@ -254,4 +254,25 @@ body {
   }
 }
 
+/* ==========================================================================
+   ConvertKit Form Overrides
+   ========================================================================== */
+.kit-newsletter-container form.formkit-form {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-width: 100% !important;
+}
+
+.kit-newsletter-container .formkit-powered-by {
+  display: none !important;
+}
+
+.kit-newsletter-container .formkit-guarantee {
+  display: none !important;
+}
+
+
 

@@ -3,7 +3,7 @@ import NotesClient from "./NotesClient";
 
 export const metadata: Metadata = {
   title: "Operator Notes | Marc Gaudett",
-  description: "Practical notes on partnerships, integrations, data, distribution, and SaaS growth systems.",
+  description: "Practical notes on SaaS partnerships, data products, integrations, distribution, outbound and revenue systems.",
 };
 
 export default function NotesPage() {

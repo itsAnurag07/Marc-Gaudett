@@ -155,7 +155,7 @@ export default function NoteClient({ slug }: NoteClientProps) {
       <Navbar />
 
       <main className="bg-[#eaeef6] min-h-screen pt-20 pb-16 px-4 md:px-6">
-        <article className="max-w-4xl mx-auto bg-white rounded-[32px] md:rounded-[40px] shadow-sm p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
+        <article className="max-w-4xl mx-auto bg-white rounded-[32px] md:rounded-[40px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
           {/* Back button */}
           <div className="mb-8">
             <Link
@@ -189,7 +189,7 @@ export default function NoteClient({ slug }: NoteClientProps) {
           </div>
 
           {/* In-line Newsletter Signup */}
-          <div id="newsletter" className="mt-12 bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100/50 space-y-4">
+          <div id="newsletter" className="mt-12 bg-gray-50 rounded-2xl p-5 sm:p-6 md:p-8 border border-gray-100/50 space-y-4">
             <div className="space-y-1">
               <span className="text-[10px] text-blue-600 font-bold uppercase tracking-widest block">THE NEWSLETTER</span>
               <h4 className="font-bold text-gray-900 text-lg">Receive the next Operator Note.</h4>

@@ -116,36 +116,31 @@ export default function HomeClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {NOTES_DATA.slice(0, 3).map((note) => (
-              <div
+              <Link
                 key={note.slug}
-                className="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[280px] group"
+                href={`/notes/${note.slug}`}
+                className="bg-white border border-gray-100 p-6 sm:p-8 rounded-[24px] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[280px] group cursor-pointer"
               >
                 <div>
                   <span className="text-[11px] text-blue-600 font-bold uppercase tracking-widest block mb-4">
                     {note.category}
                   </span>
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3 leading-snug">
-                    <Link href={`/notes/${note.slug}`}>{note.title}</Link>
+                    {note.title}
                   </h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-6 line-clamp-3">
                     {note.snippet}
                   </p>
                 </div>
-                
-                <div className="pt-4 border-t border-gray-50 flex items-center justify-between text-xs text-gray-400">
+
+                <div className="pt-4 border-t border-gray-50 flex items-center text-xs text-gray-400">
                   <div className="flex gap-2">
                     <span>{note.date}</span>
                     <span>•</span>
                     <span>{note.readTime}</span>
                   </div>
-                  <Link
-                    href={`/notes/${note.slug}`}
-                    className="text-xs font-semibold text-blue-600 group-hover:text-blue-700 flex items-center gap-0.5"
-                  >
-                    Read note <span className="material-symbols-outlined text-[14px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
-                  </Link>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -164,9 +159,9 @@ export default function HomeClient() {
           id="newsletter"
           className="max-w-7xl mx-auto my-20 md:my-28 reveal px-4"
         >
-          <div className="bg-[#0a0f1d] text-white rounded-[32px] md:rounded-[48px] p-8 md:p-16 shadow-lg border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="bg-[#0a0f1d] text-white rounded-[32px] md:rounded-[48px] p-6 sm:p-8 md:p-16 shadow-lg border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 to-transparent w-96 h-96 rounded-full blur-[85px] -top-30 -right-30 pointer-events-none"></div>
-            
+
             <div className="relative z-10 max-w-xl space-y-4">
               <span className="text-xs font-bold text-blue-400 uppercase tracking-widest block">
                 THE NEWSLETTER
@@ -193,7 +188,7 @@ export default function HomeClient() {
           id="about"
           className="max-w-4xl mx-auto my-20 md:my-28 reveal px-4"
         >
-          <div className="bg-white rounded-[24px] p-8 md:p-12 border border-gray-100 shadow-sm space-y-6">
+          <div className="bg-white rounded-[24px] p-6 sm:p-8 md:p-12 border border-gray-100 shadow-sm space-y-6">
             <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
               ABOUT MARC
             </span>
@@ -202,10 +197,12 @@ export default function HomeClient() {
             </h2>
             <div className="font-body-lg text-base text-gray-500 flex flex-col gap-4 leading-relaxed max-w-3xl">
               <p>
-                I am a GTM operator who has spent the last 15 years building partnership programs, designing integration ecosystems, and structuring outbound GTM pipelines for B2B SaaS companies.
+                I’m a SaaS growth and partnerships operator with more than 15 years of experience building distribution, outbound, affiliate, referral, integration and data-partnership programs.
+
+
               </p>
               <p>
-                This site serves as a quiet publishing platform and permanent archive of practical observations on how software companies build growth, leverage, and distribution.
+                Operator Notes is where I share practical lessons from that work—what creates leverage, what introduces unnecessary complexity and how growth systems perform once they meet the realities of product, data and execution.
               </p>
             </div>
             <div className="pt-2">
@@ -213,7 +210,7 @@ export default function HomeClient() {
                 href="/about"
                 className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all text-xs inline-block"
               >
-                Read Profile
+                More about Marc
               </Link>
             </div>
           </div>

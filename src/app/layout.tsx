@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marc Gaudett | Operator Notes",
-  description: "Practical notes on partnerships, integrations, data, distribution, and SaaS growth systems.",
+  title: "Marc Gaudett | Operator Notes on SaaS Growth and Distribution",
+  description: "Practical Operator Notes from Marc Gaudett on SaaS partnerships, integrations, data, affiliates, outbound and sustainable revenue systems.",
 };
 
 export default function RootLayout({

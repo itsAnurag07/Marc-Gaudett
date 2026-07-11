@@ -52,7 +52,7 @@ export default function ContactClient() {
       <Navbar />
 
       <main className="bg-[#eaeef6] min-h-screen pt-20 pb-6 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 md:p-12 lg:p-16 relative overflow-hidden mb-4">
+        <div className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden mb-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left Column: Context & Bullet Points */}
@@ -94,7 +94,7 @@ export default function ContactClient() {
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="lg:col-span-7 bg-gray-50/50 rounded-3xl p-10 border border-gray-100/50 shadow-sm relative">
+            <div className="lg:col-span-7 bg-gray-50/50 rounded-3xl p-6 sm:p-10 border border-gray-100/50 shadow-sm relative">
               {formStatus === "sent" ? (
                 <div className="py-20 text-center flex flex-col items-center justify-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 animate-bounce mb-2">

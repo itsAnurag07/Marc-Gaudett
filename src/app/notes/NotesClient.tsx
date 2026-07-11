@@ -46,10 +46,10 @@ export default function NotesClient() {
 
       <main className="bg-[#eaeef6] min-h-screen pt-20 pb-16 px-4 md:px-6">
         {/* Header Block */}
-        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
+        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
           <div className="max-w-3xl">
             <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-2">
-              Operator Notebook
+              WRITING
             </span>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6"
@@ -58,16 +58,16 @@ export default function NotesClient() {
               Operator Notes
             </h1>
             <p className="text-lg text-gray-500 font-normal leading-relaxed">
-              A public archive of practical notes on how B2B SaaS companies build partnerships, integrations, data products, distribution and revenue systems.
+              A public archive of practical notes on how SaaS companies build partnerships, integrations, data products, distribution and durable revenue systems.
             </p>
           </div>
         </section>
 
         {/* Newsletter Signup (Page Level Banner) */}
         <section id="newsletter" className="max-w-7xl mx-auto mb-8 fade-in-on-scroll">
-          <div className="bg-[#0a0f1d] text-white rounded-[24px] p-8 md:p-12 shadow-sm border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="bg-[#0a0f1d] text-white rounded-[24px] p-6 sm:p-8 md:p-12 shadow-sm border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 to-transparent w-96 h-96 rounded-full blur-[85px] -top-30 -right-30 pointer-events-none"></div>
-            
+
             <div className="relative z-10 max-w-xl space-y-3">
               <span className="text-xs font-bold text-blue-400 uppercase tracking-widest block">THE NEWSLETTER</span>
               <h3 className="text-2xl font-bold">Receive the next Operator Note.</h3>
@@ -89,9 +89,10 @@ export default function NotesClient() {
         <section className="max-w-7xl mx-auto mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {NOTES_DATA.map((note) => (
-              <div
+              <Link
                 key={note.slug}
-                className="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm fade-in-on-scroll hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[220px] group"
+                href={`/notes/${note.slug}`}
+                className="bg-white border border-gray-100 p-6 sm:p-8 rounded-[24px] shadow-sm fade-in-on-scroll hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[220px] group cursor-pointer"
               >
                 <div>
                   <div className="flex justify-between items-center text-[10px] text-gray-400 mb-4">
@@ -103,25 +104,33 @@ export default function NotesClient() {
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3">
-                    <Link href={`/notes/${note.slug}`}>
-                      {note.title}
-                    </Link>
+                    {note.title}
                   </h3>
                   <p className="text-sm text-gray-500 leading-relaxed line-clamp-3">
                     {note.snippet}
                   </p>
                 </div>
-                
-                <div className="mt-6 pt-4 border-t border-gray-50 flex items-center">
-                  <Link
-                    href={`/notes/${note.slug}`}
-                    className="text-xs font-semibold text-blue-600 group-hover:text-blue-700 flex items-center gap-1"
-                  >
-                    Read full note <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                  </Link>
-                </div>
-              </div>
+              </Link>
             ))}
+          </div>
+        </section>
+
+        {/* Bottom Subscription Block */}
+        <section className="max-w-7xl mx-auto mb-8 fade-in-on-scroll">
+          <div className="bg-white rounded-[24px] py-6 px-6 sm:px-8 md:py-8 md:px-12 shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-xl space-y-1">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900">Follow the notes by email.</h3>
+              <p className="text-sm text-gray-500">
+                Receive the next Operator Note when it is published.
+              </p>
+            </div>
+
+            <div className="w-full md:w-auto shrink-0 md:min-w-[360px] space-y-1">
+              <KitNewsletter />
+              <p className="text-[10px] text-gray-400 text-center">
+                No spam or sales pitches. Unsubscribe anytime.
+              </p>
+            </div>
           </div>
         </section>
 

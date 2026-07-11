@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import KitNewsletter from "@/components/KitNewsletter";
 
 export default function AboutClient() {
   // Intersection Observer for scroll animations
@@ -38,36 +37,13 @@ export default function AboutClient() {
     };
   }, []);
 
-  const operatingPrinciples = [
-    {
-      title: "Leverage over headcount",
-      description:
-        "Building distribution through integrations, partnerships, and referral networks allows SaaS companies to scale revenue efficiently without linear headcount growth.",
-    },
-    {
-      title: "Workflow-first integrations",
-      description:
-        "An integration only drives user retention and expansion if it fits naturally into their existing day-to-day workflow, rather than being built for vendor marketing hype.",
-    },
-    {
-      title: "Data-driven precision",
-      description:
-        "Outbound pipelines succeed when they are based on high-quality targeting, dynamic data enrichment, and strict compliance, not raw email volume.",
-    },
-    {
-      title: "Radical incentive alignment",
-      description:
-        "Affiliate and partner motions thrive long-term when there is complete trust, transparent attribution infrastructure, and double-sided incentives.",
-    },
-  ];
-
   return (
     <>
       <Navbar />
 
       <main className="bg-[#eaeef6] min-h-screen pt-20 pb-16 px-4 md:px-6">
         {/* Main Operator Shell */}
-        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
+        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
           <div className="space-y-8">
 
             {/* Top: Two-column — Bio left, Portrait right */}
@@ -76,31 +52,45 @@ export default function AboutClient() {
               <div className="md:col-span-8 space-y-6">
                 <div>
                   <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-2">
-                    Operator Profile
+                    ABOUT
                   </span>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
                     Marc Gaudett
                   </h1>
                 </div>
-                <h2 className="text-xl font-semibold text-gray-700">
-                  I help B2B SaaS companies align their product value with strategic distribution networks.
-                </h2>
                 <div className="font-body-lg text-base text-gray-500 flex flex-col gap-5 leading-relaxed">
                   <p>
-                    Over the past 15 years, I have worked as a growth operator, focusing on GTM systems, outbound mechanics, data alignment, and partnerships. I build the systems that help software companies capture market opportunities without over-complicating their operations.
+                    I’m a SaaS growth and partnerships operator with more than 15 years of experience building systems that connect products with customers, partners and new channels of distribution.
                   </p>
                   <p>
-                    Currently, I lead data ecosystems and integration partnerships at one of the fastest-growing outbound sales platforms in the SaaS industry. In this role, I work at the intersection of developer teams, API providers, and GTM stakeholders to ship high-leverage data integrations.
+                    My work has included partnerships, affiliate and referral programs, outbound growth, API integrations, data partnerships and the operating systems required to make those channels measurable and repeatable.
                   </p>
                   <p>
-                    This site is a quiet notebook containing practical, operator-led lessons. My goal is to serve as a useful resource for founders, product leads, and growth operators looking to design better revenue infrastructure.
+                    I’m particularly interested in the points where product, distribution and incentives meet: why some integrations produce meaningful adoption, why some partner programs scale while others stall and how better data can improve the way companies identify and reach their markets.
                   </p>
+                  <p>
+                    Operator Notes is my public record of those observations. It is where I document useful lessons, frameworks and questions from the work itself.
+                  </p>
+                </div>
+
+                {/* Experience section */}
+                <div className="pt-8 border-t border-gray-100 space-y-4">
+                  <h3 className="text-xl font-bold text-gray-900">Experience</h3>
+                  <div className="font-body-lg text-base text-gray-500 flex flex-col gap-4 leading-relaxed">
+                    <p>
+                      Across my career, I have helped build and scale growth programs across B2B SaaS and technology businesses, including partnership motions that produced multi-seven-figure revenue, outbound systems that materially increased qualified lead flow and data and integration programs designed to become part of the product experience.
+                    </p>
+                    <p>
+                      The purpose of this site is not to present a complete résumé. It is to share the thinking behind how these systems are evaluated, built and improved.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Right: Portrait */}
-              <div className="md:col-span-4 flex justify-start md:justify-end">
-                <div className="relative w-56 h-64 md:w-full md:h-80 rounded-2xl overflow-hidden shadow-sm bg-[#7b8f96]">
+              {/* Right Column: Portrait and Topics */}
+              <div className="md:col-span-4 flex flex-col gap-8 w-full">
+                {/* Portrait */}
+                <div className="relative w-56 h-64 sm:w-64 sm:h-72 md:w-full md:h-80 rounded-2xl overflow-hidden shadow-sm bg-[#7b8f96] mx-auto md:mx-0">
                   <Image
                     src="/images/Marc.webp"
                     alt="Marc Gaudett Portrait"
@@ -110,86 +100,70 @@ export default function AboutClient() {
                     priority
                   />
                 </div>
-              </div>
-            </div>
 
-            {/* Divider and Focus Areas (Full Width) */}
-            <div className="border-t border-gray-100 pt-8">
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">Current Focus Areas</h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
-                    API &amp; Data Partnerships
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
-                    BYOK Integration Architectures
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
-                    Outbound &amp; Data GTM Pipelines
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
-                    Emerging AI Search Optimization (AEO)
-                  </li>
-                </ul>
+                {/* Topics I write about */}
+                <div className="border-t border-gray-100/80 pt-6 md:mt-16 space-y-4 w-full">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 text-center md:text-left">Topics I write about</h4>
+                  <ul className="space-y-3 text-sm">
+                    <li>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                        Partnerships and distribution
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                        Data products and integrations
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                        Affiliates and referrals
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                        Outbound and GTM systems
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                        AI discovery and emerging channels
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
           </div>
         </section>
 
-        {/* Operating Philosophy / Values */}
-        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-8 md:p-12 lg:p-16 mb-8 fade-in-on-scroll">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-3">
-              Philosophy
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-              Operating Principles
-            </h2>
-            <p className="text-gray-500 mt-4 text-base md:text-lg">
-              Software is only half the battle. How it interfaces with data, outbound channels, integrations, and third-party incentives dictates whether it actually captures revenue. I operate under a few core beliefs:
+        {/* Bottom CTA Block */}
+        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 text-center mb-8 fade-in-on-scroll">
+          <div className="max-w-xl mx-auto space-y-6">
+            <p className="text-base md:text-lg text-gray-600">
+              You can follow my writing here or connect with me on LinkedIn.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {operatingPrinciples.map((principle, idx) => (
-              <div key={idx} className="space-y-3">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-xl font-bold text-gray-900">
-                  {principle.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {principle.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Newsletter Signup (Page Level Banner) */}
-        <section id="newsletter" className="max-w-7xl mx-auto mb-8 fade-in-on-scroll">
-          <div className="bg-[#0a0f1d] text-white rounded-[32px] md:rounded-[48px] p-8 md:p-12 shadow-sm border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 to-transparent w-96 h-96 rounded-full blur-[85px] -top-30 -right-30 pointer-events-none"></div>
-            
-            <div className="relative z-10 max-w-xl space-y-3 text-left">
-              <span className="text-xs font-bold text-blue-400 uppercase tracking-widest block">THE NEWSLETTER</span>
-              <h3 className="text-2xl font-bold">Receive the next Operator Note.</h3>
-              <p className="text-sm text-gray-300">
-                One practical note each week on partnerships, integrations, data, distribution and the systems behind SaaS growth.
-              </p>
-            </div>
-
-            <div className="relative z-10 w-full md:w-auto shrink-0 md:min-w-[360px] space-y-2">
-              <KitNewsletter />
-              <p className="text-[10px] text-gray-500 text-center">
-                No spam or sales pitches. Unsubscribe anytime.
-              </p>
+            <div className="flex justify-center items-center gap-4">
+              <Link
+                href="/notes"
+                className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 active:scale-[0.98] transition-all cursor-pointer text-sm"
+              >
+                Read Operator Notes
+              </Link>
+              <a
+                href="https://www.linkedin.com/in/marcgaudett/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-100 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 active:scale-[0.98] transition-all cursor-pointer text-sm"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
         </section>

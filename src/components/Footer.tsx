@@ -17,7 +17,7 @@ export default function Footer({ onScrollToSection }: FooterProps) {
         <div className="space-y-stack-md">
           <span className="font-heading text-heading font-semibold text-primary">Marc Gaudett</span>
           <p className="font-body-md text-body-md text-secondary max-w-xs">
-            Operator Notes on SaaS growth and distribution.
+            Practical Operator Notes on SaaS growth, partnerships and distribution.
           </p>
         </div>
         <div className="flex flex-col md:flex-row gap-gutter md:gap-16">
@@ -26,9 +26,20 @@ export default function Footer({ onScrollToSection }: FooterProps) {
             <ul className="space-y-2 flex flex-col">
               <li>
                 <Link
-                  className={`font-body-md text-body-md transition-colors cursor-pointer ${
-                    pathname === "/about" ? "text-primary font-medium" : "text-secondary hover:text-primary"
-                  }`}
+                  className={`font-body-md text-body-md transition-colors cursor-pointer ${pathname === "#newsletter" ? "text-primary font-medium" : "text-secondary hover:text-primary"
+                    }`}
+                  href="#newsletter"
+                >
+                  Subscribe
+                </Link>
+              </li>
+              <li>
+
+              </li>
+              <li>
+                <Link
+                  className={`font-body-md text-body-md transition-colors cursor-pointer ${pathname === "/about" ? "text-primary font-medium" : "text-secondary hover:text-primary"
+                    }`}
                   href="/about"
                 >
                   About
@@ -36,9 +47,8 @@ export default function Footer({ onScrollToSection }: FooterProps) {
               </li>
               <li>
                 <Link
-                  className={`font-body-md text-body-md transition-colors cursor-pointer ${
-                    pathname === "/notes" ? "text-primary font-medium" : "text-secondary hover:text-primary"
-                  }`}
+                  className={`font-body-md text-body-md transition-colors cursor-pointer ${pathname === "/notes" ? "text-primary font-medium" : "text-secondary hover:text-primary"
+                    }`}
                   href="/notes"
                 >
                   Operator Notes
