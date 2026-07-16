@@ -4,12 +4,12 @@
 @theme {
   /* Colors */
   --color-on-secondary-fixed: #151c27;
-  --color-surface: #fcf8fa;
+  --color-surface: #F7F5F0;
   --color-surface-dim: #dcd9db;
   --color-secondary-fixed-dim: #c0c7d6;
   --color-secondary: #585f6c;
   --color-on-tertiary: #ffffff;
-  --color-background: #fcf8fa;
+  --color-background: #F7F5F0;
   --color-tertiary-fixed: #f9debf;
   --color-on-surface: #1b1b1d;
   --color-surface-variant: #e5e2e3;
@@ -67,15 +67,25 @@
   --spacing-margin-page: 48px;
 
   /* Fonts mapped to variables created in layout.tsx */
-  --font-hero: var(--font-geist-sans), sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-hero: var(--font-newsreader), Georgia, serif;
   --font-body-lg: var(--font-geist-sans), sans-serif;
-  --font-heading: var(--font-geist-sans), sans-serif;
+  --font-heading: var(--font-newsreader), Georgia, serif;
   --font-body-md: var(--font-geist-sans), sans-serif;
-  --font-section-title: var(--font-geist-sans), sans-serif;
-  --font-section-title-mobile: var(--font-geist-sans), sans-serif;
+  --font-section-title: var(--font-newsreader), Georgia, serif;
+  --font-section-title-mobile: var(--font-newsreader), Georgia, serif;
   --font-label: var(--font-geist-sans), sans-serif;
   --font-sans: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
+  --font-arial: Arial, Helvetica, sans-serif;
+}
+
+/* Custom font utilities */
+@utility font-georgia {
+  font-family: Georgia, "Times New Roman", serif;
+}
+@utility font-arial {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Custom font sizes and weights utility definitions */
@@ -191,9 +201,13 @@
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
+html {
+  background-color: #F7F5F0 !important;
+}
+
 body {
   font-family: var(--font-geist-sans), sans-serif;
-  background-color: var(--color-surface);
+  background-color: #F7F5F0 !important;
   color: var(--color-on-surface);
 }
 
@@ -252,27 +266,110 @@ body {
   .hero-portrait-wrap {
     height: 510px; /* Height of portrait on large screens */
   }
-}
-
-/* ==========================================================================
-   ConvertKit Form Overrides
+}/* ==========================================================================
+   ConvertKit Form Overrides (High Specificity)
    ========================================================================== */
-.kit-newsletter-container form.formkit-form {
-  padding: 0 !important;
+[data-uid="db36f008f0"],
+[data-uid="db36f008f0"] *,
+.formkit-form,
+.formkit-form * {
+  max-width: none !important;
+}
+
+[data-uid="db36f008f0"],
+[data-uid="db36f008f0"] > div,
+.formkit-form,
+.formkit-form > div,
+.formkit-background {
   margin: 0 !important;
-  background: transparent !important;
+  padding: 0 !important;
   border: none !important;
+  background: transparent !important;
   box-shadow: none !important;
-  max-width: 100% !important;
+  width: 100% !important;
+  display: block !important;
 }
 
-.kit-newsletter-container .formkit-powered-by {
+.formkit-fields {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.formkit-field {
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  width: 100% !important;
+}
+
+.formkit-input {
+  margin: 0 !important;
+  width: 100% !important;
+  height: 48px !important;
+  padding: 0 24px !important;
+  font-size: 14px !important;
+  font-family: var(--font-sans), sans-serif !important;
+  color: #1c1917 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  border-radius: 9999px !important;
+  outline: none !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.formkit-input:focus {
+  border-color: #000000 !important;
+}
+
+.formkit-submit {
+  margin: 0 !important;
+  height: 48px !important;
+  padding: 0 32px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  font-family: var(--font-sans), sans-serif !important;
+  color: #ffffff !important;
+  background-color: #000000 !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease, transform 0.1s ease !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  width: auto !important;
+  flex-shrink: 0 !important;
+  flex: 0 0 auto !important;
+}
+
+.formkit-submit:hover {
+  background-color: #1f2937 !important;
+}
+
+.formkit-submit:active {
+  transform: scale(0.98) !important;
+}
+
+/* Hide ConvertKit branding & labels */
+html body .kit-newsletter-container .formkit-powered-by,
+html body .kit-newsletter-container .formkit-powered-by-convertkit,
+html body .kit-newsletter-container .formkit-guarantee,
+html body .kit-newsletter-container .formkit-header,
+html body .kit-newsletter-container .formkit-subheader {
   display: none !important;
 }
-
-.kit-newsletter-container .formkit-guarantee {
-  display: none !important;
-}
-
-
-

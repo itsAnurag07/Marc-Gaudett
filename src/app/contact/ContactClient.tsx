@@ -51,33 +51,36 @@ export default function ContactClient() {
     <>
       <Navbar />
 
-      <main className="bg-[#eaeef6] min-h-screen pt-20 pb-6 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden mb-4">
+      <main className="max-w-4xl mx-auto pt-24 pb-16 px-6 sm:px-8">
+        <div className="fade-in-on-scroll">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left Column: Context & Bullet Points */}
             <div className="lg:col-span-5 flex flex-col gap-6">
               <div>
-                <h1 className="font-hero text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
+                <span className="text-xs font-bold text-[#171714] uppercase tracking-widest block mb-2 font-sans">
+                  CONTACT
+                </span>
+                <h1 className="font-hero text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
                   Compare Notes
                 </h1>
-                <p className="font-body-lg text-lg text-gray-500 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-sans">
                   If you are building in B2B SaaS, partnerships, integrations, data, outbound, or partner-led distribution, feel free to reach out with context.
                 </p>
               </div>
 
-              <div className="border-t border-gray-100 pt-5">
-                <p className="text-base text-gray-500 leading-relaxed">
+              <div className="border-t border-black/12 pt-5">
+                <p className="text-sm sm:text-base text-gray-500 leading-relaxed font-sans">
                   I am always open to thoughtful conversations, relevant opportunities, and useful introductions.
                 </p>
               </div>
 
-              <div className="border-t border-gray-100 pt-6">
-                <div className="p-6 rounded-2xl bg-gray-50 flex items-center justify-between">
+              <div className="border-t border-black/12 pt-6">
+                <div className="p-6 rounded-2xl border border-black/12 bg-[#F7F5F0] flex items-center justify-between shadow-sm">
                   <div>
-                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block mb-1">LinkedIn</span>
+                    <span className="text-[10px] text-[#171714] font-bold uppercase tracking-wider block mb-1 font-sans">LinkedIn</span>
                     <a
-                      className="text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1.5"
+                      className="text-sm font-bold text-gray-900 hover:text-black transition-colors flex items-center gap-1.5 font-sans"
                       href="https://www.linkedin.com/in/marcgaudett/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -86,22 +89,22 @@ export default function ContactClient() {
                       <span className="material-symbols-outlined text-xs">north_east</span>
                     </a>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                    <span className="material-symbols-outlined">link</span>
+                  <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-black">
+                    <span className="material-symbols-outlined text-[20px]">link</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="lg:col-span-7 bg-gray-50/50 rounded-3xl p-6 sm:p-10 border border-gray-100/50 shadow-sm relative">
+            <div className="lg:col-span-7 bg-[#F7F5F0] rounded-3xl p-6 sm:p-10 border border-black/12 shadow-sm relative">
               {formStatus === "sent" ? (
                 <div className="py-20 text-center flex flex-col items-center justify-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 animate-bounce mb-2">
+                  <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 animate-bounce mb-2">
                     <span className="material-symbols-outlined text-[32px]">check_circle</span>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Note Received</h3>
-                  <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
+                  <p className="text-sm text-gray-500 max-w-sm leading-relaxed font-sans">
                     Thanks — your note has been received. If there’s a clear fit, Marc will follow up.
                   </p>
                 </div>
@@ -109,11 +112,11 @@ export default function ContactClient() {
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
-                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider" htmlFor="name">
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-sans" htmlFor="name">
                         Name
                       </label>
                       <input
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all shadow-sm"
+                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-2 focus:ring-black/5 outline-none transition-all shadow-sm font-sans"
                         id="name"
                         name="name"
                         type="text"
@@ -125,11 +128,11 @@ export default function ContactClient() {
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider" htmlFor="email">
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-sans" htmlFor="email">
                         Email
                       </label>
                       <input
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all shadow-sm"
+                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-2 focus:ring-black/5 outline-none transition-all shadow-sm font-sans"
                         id="email"
                         name="email"
                         type="email"
@@ -144,11 +147,11 @@ export default function ContactClient() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
-                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider" htmlFor="company">
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-sans" htmlFor="company">
                         Company
                       </label>
                       <input
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all shadow-sm"
+                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-2 focus:ring-black/5 outline-none transition-all shadow-sm font-sans"
                         id="company"
                         name="company"
                         type="text"
@@ -159,11 +162,11 @@ export default function ContactClient() {
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider" htmlFor="link">
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-sans" htmlFor="link">
                         LinkedIn Profile or Website
                       </label>
                       <input
-                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all shadow-sm"
+                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-2 focus:ring-black/5 outline-none transition-all shadow-sm font-sans"
                         id="link"
                         name="link"
                         type="text"
@@ -176,11 +179,11 @@ export default function ContactClient() {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider" htmlFor="prompt">
+                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-sans" htmlFor="prompt">
                       What prompted you to reach out?
                     </label>
                     <input
-                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all shadow-sm"
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-2 focus:ring-black/5 outline-none transition-all shadow-sm font-sans"
                       id="prompt"
                       name="prompt"
                       type="text"
@@ -192,11 +195,11 @@ export default function ContactClient() {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider" htmlFor="discussion">
+                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-sans" htmlFor="discussion">
                       What would be useful to discuss?
                     </label>
                     <textarea
-                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none resize-none transition-all shadow-sm"
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-black focus:ring-2 focus:ring-black/5 outline-none resize-none transition-all shadow-sm font-sans"
                       id="discussion"
                       name="discussion"
                       rows={6}
@@ -211,7 +214,7 @@ export default function ContactClient() {
                   <button
                     type="submit"
                     disabled={formStatus === "sending"}
-                    className="w-full bg-blue-600 text-white py-4 rounded-full font-semibold hover:bg-blue-700 transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-black text-white py-4 rounded-full font-semibold hover:bg-gray-800 transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer text-sm font-sans"
                   >
                     {formStatus === "sending" ? "Sending..." : "Send Note"}
                     {formStatus === "idle" && <span className="material-symbols-outlined text-[18px]">send</span>}

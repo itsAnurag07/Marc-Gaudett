@@ -6,14 +6,13 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import KitNewsletter from "@/components/KitNewsletter";
-import { NOTES_DATA } from "@/data/notes";
 
-export default function HomeClient() {
+export default function HomeClient({ initialNotes }: { initialNotes: any[] }) {
   // Reveal on scroll logic for smooth animations
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
+      threshold: 0.08,
+      rootMargin: "0px 0px -40px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -32,189 +31,159 @@ export default function HomeClient() {
     };
   }, []);
 
-  const handleSubscribeScroll = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById("newsletter");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <>
       <Navbar />
 
-      <main className="bg-[#eaeef6] min-h-screen pt-20 pb-2 px-4 md:px-6 space-y-6">
-        {/* Hero Section */}
-        <div
-          id="hero"
-          className="hero-card max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm relative overflow-hidden flex items-center"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
-            {/* Left Column: Hero Content */}
-            <div className="lg:col-span-7 flex flex-col gap-6">
-              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
-                OPERATOR NOTES
-              </span>
-              <h1 className="font-hero text-[40px] md:text-[52px] lg:text-[56px] xl:text-[64px] font-bold text-gray-900 leading-[1.05] tracking-tight">
-                Practical notes on building growth and distribution in SaaS.
-              </h1>
-              <div className="font-body-lg text-sm lg:text-base text-gray-500 max-w-2xl leading-relaxed">
-                <p>
-                  I write about partnerships, integrations, data, affiliates, referrals, outbound and the systems that turn them into sustainable revenue.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-4 items-center mt-2">
-                <Link
-                  href="/notes"
-                  className="bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-blue-700 shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2 text-sm"
-                >
-                  Read Operator Notes <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </Link>
-                <a
-                  href="#newsletter"
-                  onClick={handleSubscribeScroll}
-                  className="border border-gray-200 text-gray-700 px-8 py-3.5 rounded-full font-semibold hover:bg-gray-50 transition-all cursor-pointer text-sm"
-                >
-                  Subscribe
-                </a>
-              </div>
-              <p className="text-xs text-gray-400 font-normal italic">
-                Lessons and observations from more than 15 years of building growth, partnership and revenue systems.
-              </p>
-            </div>
+      {/* Page wrapper — narrow column, left-padded like the reference site */}
+      <main className="w-full px-[15%] pt-24 pb-20">
 
-            {/* Right Column: Hero Portrait */}
-            <div className="lg:col-span-5 h-full flex items-center justify-center relative w-full">
-              <div className="hero-portrait-wrap rounded-[32px] overflow-hidden shadow-sm bg-[#7b8f96]">
-                <Image
-                  src="/images/Marc.webp"
-                  alt="Marc Gaudett Portrait"
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* ── Hero ─────────────────────────────────────────────────── */}
+        <section id="hero" className="pt-16 pb-12">
+          <p className="font-arial text-[12px] font-semibold  uppercase tracking-[0.14em] text-[#6B6861] mb-4" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
+            Operator Notes
+          </p>
 
-        {/* Latest Operator Notes Section */}
-        <section id="notes" className="max-w-7xl mx-auto my-20 md:my-28 reveal px-4">
-          <div className="max-w-3xl mb-12 space-y-4">
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
-              LATEST WRITING
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-              Latest Operator Notes
-            </h2>
-            <p className="text-gray-500 text-base md:text-lg leading-relaxed">
-              Practical observations from the work of building partnerships, integrations, data products and modern revenue systems.
+          <h1
+            className="font-georgia text-[#171714]"
+            style={{
+              fontFamily: 'Georgia, "Times New Roman", serif',
+              letterSpacing: "-.045em",
+              maxWidth: "860px",
+              marginBottom: "24px",
+              fontSize: "clamp(44px, 7vw, 78px)",
+              fontWeight: 400,
+              lineHeight: ".98",
+            }}
+          >
+            Practical notes on<br />
+            growth, partnerships,<br />
+            and what produces<br />
+            results.
+          </h1>
+
+          <p className="font-georgia text-[21px] text-[#6B6861] leading-[1.65] mb-7 max-w-[60%]">
+            I write about building businesses, distribution, partnerships, performance, and the systems that turn effort into durable results.
+          </p>
+
+          {/* Inline Subscribe Form */}
+          <div className="w-full max-w-[450px]">
+            <KitNewsletter />
+            <p className="font-sans text-[14px] text-[#6B6861] mt-2 leading-snug">
+              Practical notes, sent when there's something useful to share. No spam.
             </p>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {NOTES_DATA.slice(0, 3).map((note) => (
+        {/* ── Latest Notes ─────────────────────────────────────────── */}
+        <section id="notes" className="border-t border-[#c5c1b9] pt-20 pb-2">
+          <div className="flex justify-between items-baseline mb-6">
+            <h2 className="font-georgia font-normal text-[#171714] text-[46px] leading-tight">
+              Latest notes
+            </h2>
+
+
+            <Link
+              href="/notes"
+              className="font-sans text-[16px] text-gray-500 hover:text-black transition-colors"
+            >
+              View all →
+            </Link>
+          </div>
+
+
+
+
+          <div className="divide-y divide-[#c5c1b9]">
+            {initialNotes.map((note) => (
               <Link
                 key={note.slug}
                 href={`/notes/${note.slug}`}
-                className="bg-white border border-gray-100 p-6 sm:p-8 rounded-[24px] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between min-h-[280px] group cursor-pointer"
+                className="block py-6 group cursor-pointer"
               >
-                <div>
-                  <span className="text-[11px] text-blue-600 font-bold uppercase tracking-widest block mb-4">
+                <div className="flex justify-between items-baseline mb-1.5">
+                  <span className="font-arial text-[18px] font-semibold uppercase text-[#6B6861]" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
                     {note.category}
                   </span>
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3 leading-snug">
-                    {note.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-6 line-clamp-3">
-                    {note.snippet}
-                  </p>
+                  <span className="font-sans text-[14px] text-gray-400">
+                    {note.date} · {note.readTime}
+                  </span>
                 </div>
 
-                <div className="pt-4 border-t border-gray-50 flex items-center text-xs text-gray-400">
-                  <div className="flex gap-2">
-                    <span>{note.date}</span>
-                    <span>•</span>
-                    <span>{note.readTime}</span>
-                  </div>
-                </div>
+                <h3 className="font-georgia font-normal text-[#171714] text-[24px] leading-[1.3] mb-2 group-hover:opacity-70 transition-opacity">
+                  {note.title}
+                </h3>
+
+                <p className="font-georgia font-normal text-[18px] text-[#6B6861] leading-[1.6]">
+                  {note.snippet}
+                </p>
               </Link>
             ))}
           </div>
-
-          <div className="flex justify-center mt-8">
-            <Link
-              href="/notes"
-              className="text-sm font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1 font-body-md"
-            >
-              View all Operator Notes <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-            </Link>
-          </div>
         </section>
 
-        {/* Newsletter Signup Section */}
-        <section
-          id="newsletter"
-          className="max-w-7xl mx-auto my-20 md:my-28 reveal px-4"
-        >
-          <div className="bg-[#0a0f1d] text-white rounded-[32px] md:rounded-[48px] p-6 sm:p-8 md:p-16 shadow-lg border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 to-transparent w-96 h-96 rounded-full blur-[85px] -top-30 -right-30 pointer-events-none"></div>
+        {/* ── Mid-page statement ───────────────────────────────────── */}
+        <section className="border-t border-[#c5c1b9] pt-20 pb-20">
+          <h2
+            className="font-georgia font-normal text-[#171714] leading-[1.18] max-w-[860px]"
+            style={{ fontSize: "clamp(46px, 4vw, 34px)" }}
+          >
+            Different industries. Different problems. The
+            same focus: understanding what works and
+            producing better results.
+          </h2>
+        </section>
 
-            <div className="relative z-10 max-w-xl space-y-4">
-              <span className="text-xs font-bold text-blue-400 uppercase tracking-widest block">
-                THE NEWSLETTER
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-                Receive the next Operator Note.
+        {/* ── About Marc ───────────────────────────────────────────── */}
+        <section id="about" className="border-t border-[#c5c1b9] pt-18 pb-18">
+          <div className="flex gap-5 items-start">
+            {/* Small circular portrait */}
+            <div className="relative w-[110px] h-[110px] shrink-0 rounded-full overflow-hidden bg-[#b0bec5]">
+              <Image
+                src="/images/Marc.webp"
+                alt="Marc Gaudett"
+                fill
+                className="object-cover object-top"
+                sizes=" 110px"
+              />
+            </div>
+
+            <div className="flex-1">
+              <h2 className="font-georgia font-normal text-[#171714] text-[46px] mb-4 leading-tight">
+                About Marc
               </h2>
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                One practical note each week on partnerships, integrations, data, distribution and the systems behind SaaS growth.
-              </p>
-            </div>
 
-            <div className="relative z-10 w-full md:w-auto shrink-0 md:min-w-[400px] space-y-3">
-              <KitNewsletter />
-              <p className="text-[11px] text-gray-500 text-center">
-                No spam or sales pitches. Unsubscribe anytime.
-              </p>
-            </div>
-          </div>
-        </section>
+              <div className="font-georgia text-[18px] text-[#6B6861] leading-[1.65] space-y-3 max-w-[640px]">
+                <p>
+                  I'm a growth and partnerships operator with more than 15 years of experience building revenue, distribution, and operating systems across technology, SaaS, ecommerce, fitness, franchising, and other growth environments.  Operator Notes is where I share what worked, what did not, and what the work taught me.
+                </p>
 
-        {/* Short About Marc Section */}
-        <section
-          id="about"
-          className="max-w-4xl mx-auto my-20 md:my-28 reveal px-4"
-        >
-          <div className="bg-white rounded-[24px] p-6 sm:p-8 md:p-12 border border-gray-100 shadow-sm space-y-6">
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
-              ABOUT MARC
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight leading-tight">
-              An operator's approach to SaaS growth.
-            </h2>
-            <div className="font-body-lg text-base text-gray-500 flex flex-col gap-4 leading-relaxed max-w-3xl">
-              <p>
-                I’m a SaaS growth and partnerships operator with more than 15 years of experience building distribution, outbound, affiliate, referral, integration and data-partnership programs.
+              </div>
 
-
-              </p>
-              <p>
-                Operator Notes is where I share practical lessons from that work—what creates leverage, what introduces unnecessary complexity and how growth systems perform once they meet the realities of product, data and execution.
-              </p>
-            </div>
-            <div className="pt-2">
               <Link
                 href="/about"
-                className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all text-xs inline-block"
+                className="font-sans text-[15px] font-semibold text-[#171714] hover:opacity-60 transition-opacity mt-4 inline-block"
               >
-                More about Marc
+                More about Marc →
               </Link>
             </div>
           </div>
         </section>
+
+        {/* ── Bottom Newsletter ─────────────────────────────────────── */}
+        <section id="newsletter" className="border-t border-[#c5c1b9] pt-18 pb-0">
+          <h2 className="font-georgia font-normal text-[#171714] text-[46px] leading-[1.18] mb-0">
+            Receive the next Operator Note.
+          </h2>
+          <p className="font-georgia text-[18px] text-[#6B6861] mb-6 leading-relaxed">
+            Practical observations on business, growth, partnerships, and performance.
+          </p>
+
+          <div className="w-full max-w-[420px]">
+            <KitNewsletter />
+          </div>
+        </section>
+
       </main>
 
       <Footer />

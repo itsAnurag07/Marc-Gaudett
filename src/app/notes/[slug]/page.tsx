@@ -1,27 +1,34 @@
 import { Metadata } from "next";
-import { NOTES_DATA } from "@/data/notes";
 import NoteClient from "./NoteClient";
+import { prisma } from "@/lib/prisma";
+import { notFound } from "next/navigation";
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
+export const revalidate = 0;
 
-export async function generateStaticParams() {
-  return NOTES_DATA.map((note) => ({
-    slug: note.slug,
-  }));
-}
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
-  const note = NOTES_DATA.find((n) => n.slug === resolvedParams.slug);
+  const note = await prisma.note.findUnique({ where: { slug: resolvedParams.slug } });
   return {
-    title: note ? `${note.title} | Operator Notes` : "Operator Note | Marc Gaudett",
-    description: note?.snippet || "Operator Notes by Marc Gaudett.",
+    title: note ? `${note.title} | Operator Notes` : "Note Not Found",
   };
 }
 
-export default async function NotePage({ params }: PageProps) {
+export default async function NotePage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  return <NoteClient slug={resolvedParams.slug} />;
+  
+  const note = await prisma.note.findUnique({
+    where: { slug: resolvedParams.slug }
+  });
+
+  if (!note) {
+    notFound();
+  }
+
+  // Parse the JSON content
+  const parsedNote = {
+    ...note,
+    content: JSON.parse(note.content as string)
+  };
+
+  return <NoteClient note={parsedNote} />;
 }

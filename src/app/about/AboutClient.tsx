@@ -41,24 +41,34 @@ export default function AboutClient() {
     <>
       <Navbar />
 
-      <main className="bg-[#eaeef6] min-h-screen pt-20 pb-16 px-4 md:px-6">
+      <main className="w-full px-[15%] pt-24 pb-20 space-y-16">
         {/* Main Operator Shell */}
-        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden mb-8 fade-in-on-scroll">
+        <section className="fade-in-on-scroll">
           <div className="space-y-8">
-
-            {/* Top: Two-column — Bio left, Portrait right */}
+ 
+            {/* Top: Two-column — Bio left, Topics right */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
               {/* Left: Headline & Bio */}
               <div className="md:col-span-8 space-y-6">
                 <div>
-                  <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-2">
+                  <span className="font-arial text-[12px] font-semibold uppercase tracking-[0.14em] text-[#6B6861] block mb-4" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
                     ABOUT
                   </span>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+                  <h1
+                    className="font-georgia text-[#171714]"
+                    style={{
+                      fontFamily: 'Georgia, "Times New Roman", serif',
+                      letterSpacing: "-.045em",
+                      marginBottom: "24px",
+                      fontSize: "clamp(44px, 7vw, 78px)",
+                      fontWeight: 400,
+                      lineHeight: ".98",
+                    }}
+                  >
                     Marc Gaudett
                   </h1>
                 </div>
-                <div className="font-body-lg text-base text-gray-500 flex flex-col gap-5 leading-relaxed">
+                <div className="font-georgia text-[18px] text-[#6B6861] flex flex-col gap-5 leading-[1.65]">
                   <p>
                     I’m a SaaS growth and partnerships operator with more than 15 years of experience building systems that connect products with customers, partners and new channels of distribution.
                   </p>
@@ -72,11 +82,11 @@ export default function AboutClient() {
                     Operator Notes is my public record of those observations. It is where I document useful lessons, frameworks and questions from the work itself.
                   </p>
                 </div>
-
+ 
                 {/* Experience section */}
-                <div className="pt-8 border-t border-gray-100 space-y-4">
-                  <h3 className="text-xl font-bold text-gray-900">Experience</h3>
-                  <div className="font-body-lg text-base text-gray-500 flex flex-col gap-4 leading-relaxed">
+                <div className="pt-8 border-t border-[#c5c1b9] space-y-4">
+                  <h3 className="font-georgia font-normal text-[#171714] text-[32px] leading-tight">Experience</h3>
+                  <div className="font-georgia text-[18px] text-[#6B6861] flex flex-col gap-4 leading-[1.65]">
                     <p>
                       Across my career, I have helped build and scale growth programs across B2B SaaS and technology businesses, including partnership motions that produced multi-seven-figure revenue, outbound systems that materially increased qualified lead flow and data and integration programs designed to become part of the product experience.
                     </p>
@@ -86,52 +96,40 @@ export default function AboutClient() {
                   </div>
                 </div>
               </div>
-
-              {/* Right Column: Portrait and Topics */}
+ 
+              {/* Right Column: Topics */}
               <div className="md:col-span-4 flex flex-col gap-8 w-full">
-                {/* Portrait */}
-                <div className="relative w-56 h-64 sm:w-64 sm:h-72 md:w-full md:h-80 rounded-2xl overflow-hidden shadow-sm bg-[#7b8f96] mx-auto md:mx-0">
-                  <Image
-                    src="/images/Marc.webp"
-                    alt="Marc Gaudett Portrait"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 224px, 400px"
-                    priority
-                  />
-                </div>
-
                 {/* Topics I write about */}
-                <div className="border-t border-gray-100/80 pt-6 md:mt-16 space-y-4 w-full">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 text-center md:text-left">Topics I write about</h4>
-                  <ul className="space-y-3 text-sm">
+                <div className="border-t border-[#c5c1b9] pt-6 space-y-4 w-full">
+                  <h4 className="font-arial text-[12px] font-semibold uppercase tracking-[0.14em] text-[#6B6861] text-center md:text-left block" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>Topics I write about</h4>
+                  <ul className="space-y-3 font-sans text-[15px] text-[#6B6861]">
                     <li>
-                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-black transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0"></span>
                         Partnerships and distribution
                       </Link>
                     </li>
                     <li>
-                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-black transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0"></span>
                         Data products and integrations
                       </Link>
                     </li>
                     <li>
-                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-black transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0"></span>
                         Affiliates and referrals
                       </Link>
                     </li>
                     <li>
-                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-black transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0"></span>
                         Outbound and GTM systems
                       </Link>
                     </li>
                     <li>
-                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span>
+                      <Link href="/notes" className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-black transition-colors">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0"></span>
                         AI discovery and emerging channels
                       </Link>
                     </li>
@@ -139,20 +137,31 @@ export default function AboutClient() {
                 </div>
               </div>
             </div>
-
+ 
           </div>
         </section>
-
+ 
         {/* Bottom CTA Block */}
-        <section className="max-w-7xl mx-auto bg-white rounded-[32px] md:rounded-[48px] shadow-sm p-6 sm:p-8 md:p-12 lg:p-16 text-center mb-8 fade-in-on-scroll">
-          <div className="max-w-xl mx-auto space-y-6">
-            <p className="text-base md:text-lg text-gray-600">
+        <section className="border-t border-[#c5c1b9] pt-12 sm:pt-16 fade-in-on-scroll">
+          <div className="max-w-xl mx-auto flex flex-col items-center text-center space-y-6">
+            {/* Thumbnail portrait of Marc */}
+            <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-black/12 bg-[#7b8f96] shadow-sm">
+              <Image
+                src="/images/Marc.webp"
+                alt="Marc Gaudett"
+                fill
+                className="object-cover object-top"
+                sizes="112px"
+              />
+            </div>
+ 
+            <p className="font-georgia text-[21px] text-[#6B6861] leading-[1.65]">
               You can follow my writing here or connect with me on LinkedIn.
             </p>
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex justify-center items-center gap-4 w-full">
               <Link
                 href="/notes"
-                className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 active:scale-[0.98] transition-all cursor-pointer text-sm"
+                className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 active:scale-[0.98] transition-all cursor-pointer text-sm font-sans"
               >
                 Read Operator Notes
               </Link>
@@ -160,7 +169,7 @@ export default function AboutClient() {
                 href="https://www.linkedin.com/in/marcgaudett/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-100 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 active:scale-[0.98] transition-all cursor-pointer text-sm"
+                className="border border-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-50 active:scale-[0.98] transition-all cursor-pointer text-sm font-sans"
               >
                 LinkedIn
               </a>
@@ -168,7 +177,7 @@ export default function AboutClient() {
           </div>
         </section>
       </main>
-
+ 
       <Footer />
     </>
   );
